@@ -1,0 +1,82 @@
+{
+  "prompts": [
+    "Responsive login form with remember me",
+    "Sign-up form with email and password fields",
+    "Two-factor authentication screen",
+    "Forgot password screen with email input",
+    "Password reset form with validation",
+    "OAuth login buttons for Google and Facebook",
+    "Login form with dark mode support",
+
+    "Contact form with name, email, and message fields",
+    "Search bar with autocomplete suggestions",
+    "Subscription form with email validation",
+    "Multi-step form for user onboarding",
+    "Form with disabled submit button until all fields are valid",
+    "File upload component with drag-and-drop support",
+    "Form with dropdown, date picker, and checkbox",
+    "Mobile-friendly address form with country selector",
+
+    "Responsive top navigation bar with logo and profile avatar",
+    "Sidebar with icons and collapsible menu items",
+    "Sticky header with navigation and search",
+    "Bottom tab navigation for mobile layout",
+    "Breadcrumb component for multi-level pages",
+    "Vertical stepper for onboarding process",
+
+    "Success toast after form submission",
+    "Error alert with retry button",
+    "Modal dialog for confirmation (e.g., 'Are you sure you want to delete?')",
+    "Info banner with dismiss option",
+    "Inline validation messages in a form",
+    "Loading spinner centered on the page",
+    "Snackbar for temporary messages",
+
+    "Admin dashboard with stats cards and charts",
+    "Table with sortable and filterable columns",
+    "User profile card with avatar and edit button",
+    "KPI widgets in a responsive grid layout",
+    "Collapsible panels for grouped content",
+    "Tabbed interface for settings sections",
+    "Calendar component with event markers",
+
+    "Product card with image, title, price, and add to cart button",
+    "Shopping cart with editable quantities",
+    "Checkout form with payment method selector",
+    "Order summary with totals and taxes",
+    "Rating and review component",
+    "Wishlist heart toggle on product",
+
+    "Mobile-first login screen",
+    "Hamburger menu with slide-in navigation",
+    "Card layout that stacks on mobile",
+    "Full-screen modal for mobile",
+    "Scrollable tab bar on small screens",
+
+    "Landing page with hero section and call-to-action",
+    "About us section with team bios",
+    "Pricing table with three tiers",
+    "Blog article page with sidebar and comments",
+    "Split-screen layout with image and form",
+    "Grid layout for a portfolio or gallery",
+
+    "Code editor with syntax highlighting",
+    "Toggleable dark/light theme switch",
+    "JSON viewer with collapsible tree",
+    "Copy-to-clipboard button",
+    "Terminal-like console output component",
+
+    "Language selector dropdown",
+    "Form with RTL layout support",
+    "High-contrast toggle for accessibility",
+    "Accessible modal with keyboard support",
+    "Tooltip with screen reader label",
+
+    "Job application form with file upload and LinkedIn import",
+    "Feedback form with emoji rating scale",
+    "Booking form with date and time picker",
+    "Profile settings page with tabs",
+    "Notification center with read/unread indicators",
+    "Timeline component showing progress updates"
+  ]
+}

@@ -7,7 +7,7 @@ const Prompt = () => {
     const formData = new FormData(event.currentTarget);
     const query = formData.get(ID) as string;
     console.log(query);
-    const res = await fetch("http://localhost:3000/test", {
+    const res = await fetch(`http://localhost:3000/api/v1/generate?prompt=${query}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
