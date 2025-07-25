@@ -10,9 +10,6 @@ const generateCode = (parsed: {
   - Select prefab function from componentType
   - Select code for each property
   - Call prefab function, passing in properties
-  TODO: Handle case where property already in prefab template
-    - Create array of defaults 
-    - Don't render prop if already in defaults
   */
 
   const prefabFunction = prefabMap[parsed.componentType];
