@@ -1,4 +1,6 @@
-const generateGenericForm = (): string => {
+import { elementsMap } from "./elements";
+
+export const generateGenericForm = (props: string[]): string => {
   return `
       <form onSubmit={onSubmit}>
         <Utility vFlex vFlexCol vGap={4}>
@@ -7,6 +9,7 @@ const generateGenericForm = (): string => {
             <Input aria-required="true" id={id} name={id} type="text" />
           </InputContainer>
         </Utility>
+        ${props.join("\n")}
         <Utility vFlex vFlexRow vGap={8} vMarginTop={16}>
           <Button type="submit">Submit</Button>
           <Button colorScheme="secondary" type="reset">
@@ -17,7 +20,7 @@ const generateGenericForm = (): string => {
     `;
 };
 
-const generateLoginForm = (): string => {
+export const generateLoginForm = (props: string[]): string => {
   return `
       <form>
         <Utility vFlex vFlexCol vGap={4}>
@@ -32,6 +35,7 @@ const generateLoginForm = (): string => {
             <Input aria-required="true" id={"password"} name={"password"} type="password" required={true} />
           </InputContainer>
         </Utility>
+        ${props.join("\n")}
         <Utility vFlex vFlexRow vGap={8} vMarginTop={16}>
           <Button type="submit">Log in</Button>
         </Utility>
@@ -39,7 +43,7 @@ const generateLoginForm = (): string => {
     `;
 };
 
-const generateSigninForm = (): string => {
+export const generateSignupForm = (props: string[]): string => {
   return `
       <form>
         <Utility vFlex vFlexCol vGap={4}>
@@ -54,8 +58,9 @@ const generateSigninForm = (): string => {
             <Input aria-required="true" id={"password"} name={"password"} type="password" required={true} />
           </InputContainer>
         </Utility>
+        ${props.join("\n")}
         <Utility vFlex vFlexRow vGap={8} vMarginTop={16}>
-          <Button type="submit">sign in</Button>
+          <Button type="submit">sign up</Button>
         </Utility>
       </form>
     `;

@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import parse from "../parser/Parser";
+import generateCode from "../codeGenerator/CodeGenerator";
 
 const generateRouter = express.Router();
 
@@ -24,8 +25,9 @@ generateRouter.get("/generate", (req: Request, res: Response) => {
   */
 
   const parsed = parse(prompt)
+  const code = generateCode(parsed)
 
-  res.status(200).json({ prompt, parsed });
+  res.status(200).json({ prompt, parsed, code });
 });
 
 export default generateRouter;

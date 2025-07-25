@@ -26,7 +26,6 @@ const extractProperties = (prompt: string, aliases: Record<string, string>): str
   const matchedProperties = new Set<string>();
 
   const sortedAliases = Object.keys(aliases).sort((a, b) => b.length - a.length);
-  console.log(sortedAliases);
   for (const alias of sortedAliases) {
     const pattern = new RegExp(`\\b${alias}\\b`, "i");
     if (pattern.test(prompt)) {

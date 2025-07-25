@@ -1,4 +1,4 @@
-const elementsMap = {
+export const elementsMap: Record<string, string> = {
   email: `
     <Utility vFlex vFlexCol vGap={4}>
       <Label htmlFor="email">Email</Label>
