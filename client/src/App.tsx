@@ -1,21 +1,28 @@
-import { useState } from 'react'
-import Prompt from './components/Prompt'
-import CodeBlock from './components/CodeBlock';
-import Navbar from './components/Navbar';
+import { useState } from "react";
+import Prompt from "./components/Prompt";
+import CodeBlock from "./components/CodeBlock";
+import Navbar from "./components/Navbar";
+import Greeting from "./components/Greeting";
 
 function App() {
   const [code, setCode] = useState<string>();
   return (
-    <div className='v-border'>
-    <header>
-      <Navbar />
-    </header>
+    <div
+      style={{
+        minHeight: "100vh",
+      }}
+    >
+      <header>
+        <Navbar />
+      </header>
       <main>
+        {!code && <Greeting />}
+
         <Prompt onSubmit={setCode} />
         {code && <CodeBlock code={code} />}
       </main>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

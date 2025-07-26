@@ -1,4 +1,4 @@
-import { Input, InputContainer, Typography } from "@visa/nova-react";
+import { Input, InputContainer, Utility } from "@visa/nova-react";
 
 const ID = "prompt-input";
 const Prompt = ({ onSubmit }: { onSubmit: (code: string) => void }) => {
@@ -22,14 +22,24 @@ const Prompt = ({ onSubmit }: { onSubmit: (code: string) => void }) => {
   };
 
   return (
-    <div className="prompt-container">
-      <Typography variant="display-2">What can I create for you?</Typography>
+    <Utility style={{ 
+      position: "fixed",
+      bottom: "0",
+      width: '100%', 
+      margin: '0 auto',
+      padding: 'var(--size-scalable-16) var(--size-scalable-16)',
+      gap: "1rem"
+    }}>
       <form onSubmit={handleSubmit}>
         <InputContainer>
-          <Input type="text" placeholder="Ask to build..." id={ID} name={ID} />
+          <Input type="text" placeholder="Ask to build..." id={ID} name={ID} style={{
+            fontSize: "1.25rem",
+            padding: ".5rem",
+            width: "100%"
+          }} />
         </InputContainer>
       </form>
-    </div>
+    </Utility>
   );
 };
 
