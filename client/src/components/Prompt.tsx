@@ -23,7 +23,7 @@ const Prompt = ({ onSubmit }: { onSubmit: (code: string) => void }) => {
 
   return (
     <div className="prompt-container">
-      <Typography variant="display-1">What can I create for you?</Typography>
+      <Typography variant="display-2">What can I create for you?</Typography>
       <form onSubmit={handleSubmit}>
         <InputContainer>
           <Input type="text" placeholder="Ask to build..." id={ID} name={ID} />
