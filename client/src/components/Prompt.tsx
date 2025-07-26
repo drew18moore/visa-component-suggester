@@ -1,7 +1,11 @@
-import { Input, InputContainer, Utility } from "@visa/nova-react";
+import { Button, Input, InputContainer, Utility } from "@visa/nova-react";
+import { useRef } from "react";
 
 const ID = "prompt-input";
 const Prompt = ({ onSubmit }: { onSubmit: (code: string) => void }) => {
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const formRef = useRef<HTMLFormElement | null>(null);
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
@@ -21,22 +25,57 @@ const Prompt = ({ onSubmit }: { onSubmit: (code: string) => void }) => {
     onSubmit(data.code);
   };
 
+  const suggestedPrompts: string[] = [
+    "login form with remember me",
+    "top navigation bar with logo and profile avatar",
+    "confirmation dialog",
+  ];
+
   return (
-    <Utility style={{ 
-      position: "fixed",
-      bottom: "0",
-      width: '100%', 
-      margin: '0 auto',
-      padding: 'var(--size-scalable-16) var(--size-scalable-16)',
-      gap: "1rem"
-    }}>
-      <form onSubmit={handleSubmit}>
+    <Utility
+      vFlex
+      vFlexCol
+      vGap={10}
+      style={{
+        position: "fixed",
+        bottom: "0",
+        width: "100%",
+        margin: "0 auto",
+        padding: "var(--size-scalable-16) var(--size-scalable-16)",
+      }}
+    >
+      <Utility vFlex vJustifyContent="center" vGap={10}>
+        {suggestedPrompts.map((p) => (
+          <Button
+            onClick={() => {
+              if (inputRef.current && formRef.current) {
+                inputRef.current.value = p
+                formRef.current.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }))
+              }
+            }}
+            colorScheme="secondary"
+            style={{
+              padding: "1.5rem",
+            }}
+          >
+            {p}
+          </Button>
+        ))}
+      </Utility>
+      <form ref={formRef} onSubmit={handleSubmit}>
         <InputContainer>
-          <Input type="text" placeholder="Ask to build..." id={ID} name={ID} style={{
-            fontSize: "1.25rem",
-            padding: ".5rem",
-            width: "100%"
-          }} />
+          <Input
+            type="text"
+            placeholder="Ask to build..."
+            id={ID}
+            name={ID}
+            ref={inputRef}
+            style={{
+              fontSize: "1.25rem",
+              padding: "var(--size-scalable-16)",
+              width: "100%",
+            }}
+          />
         </InputContainer>
       </form>
     </Utility>
