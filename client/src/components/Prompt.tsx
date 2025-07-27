@@ -57,7 +57,7 @@ const Prompt = ({
     >
       {code.length === 0 && (
         <Utility vFlex vJustifyContent="center" vGap={10}>
-          {suggestedPrompts.map((p) => (
+          {suggestedPrompts.map((p, i) => (
             <Button
               onClick={() => {
                 if (inputRef.current && formRef.current) {
@@ -71,6 +71,7 @@ const Prompt = ({
               style={{
                 padding: "1.5rem",
               }}
+              key={`suggested-${i}`}
             >
               {p}
             </Button>

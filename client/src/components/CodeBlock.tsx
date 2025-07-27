@@ -1,5 +1,5 @@
 import { Utility } from "@visa/nova-react";
-import { CopyBlock, dracula } from 'react-code-blocks';
+import { CopyBlock, dracula } from "react-code-blocks";
 import formatCode from "../utils/formatCode";
 import { useEffect, useState } from "react";
 
@@ -8,13 +8,18 @@ const CodeBlock = ({ code }: { code: string }) => {
 
   useEffect(() => {
     (async () => {
-      const res = await formatCode(code)
+      const res = await formatCode(code);
       setFormattedCode(res);
-    })()
-  }, [code])
-  
+    })();
+  }, [code]);
+
   return (
-    <Utility vPadding={16}>
+    <Utility
+      vPadding={16}
+      style={{
+        paddingTop: "5.5rem",
+      }}
+    >
       <CopyBlock
         text={formattedCode}
         language="jsx"
@@ -23,7 +28,7 @@ const CodeBlock = ({ code }: { code: string }) => {
         theme={dracula}
       />
     </Utility>
-  )
-}
+  );
+};
 
 export default CodeBlock;
