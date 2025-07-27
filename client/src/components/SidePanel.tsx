@@ -57,7 +57,7 @@ const SidePanel = ({
             tag="div"
             style={
               {
-                inlineSize: "242px",
+                inlineSize: "350px",
               } as CSSProperties
             }
           >
@@ -85,15 +85,18 @@ const SidePanel = ({
               <Tabs orientation="vertical">
                 {recentPrompts.map((tabContent, i) => (
                   <Tab key={`prompt-${i}`}>
-                    <UtilityFragment vMarginLeft={14}>
+                    <UtilityFragment>
                       <Button
                         colorScheme="tertiary"
-                        element={<Typography>{tabContent.prompt}</Typography>}
                         onClick={() => {
                           setCurrentPrompt(tabContent);
                           panelRef.current?.close();
                         }}
-                      />
+                      ><Typography style={{
+                        whiteSpace: "nowrap",
+                        textOverflow: "ellipsis",
+                        overflow: "hidden"
+                      }}>{tabContent.prompt}</Typography></Button>
                     </UtilityFragment>
                   </Tab>
                 ))}
