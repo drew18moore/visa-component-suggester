@@ -32,7 +32,8 @@ const Prompt = ({
       }
     );
     const data = (await res.json()) as Prompt;
-    setCurrentPrompt(data || null);
+    if (data.code) setCurrentPrompt(data);
+    else setCurrentPrompt(null);
 
     if (data.code) {
       const store = localStorage.getItem("prompts");

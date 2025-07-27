@@ -12,4 +12,5 @@ export const prefabMap: Record<
   dialog: prefabs.generateGenericDialog,
   errordialog: prefabs.generateErrorDialog,
   warningdialog: prefabs.generateWarningDialog,
+  "NOT_FOUND": prefabs.generateGenericComponent
 };

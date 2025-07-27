@@ -5,6 +5,21 @@ export type GeneratePrefabReturn = {
   components: string[];
 };
 
+export const generateGenericComponent = (props: string[]): GeneratePrefabReturn => {
+  if (props.length === 0) {
+    return { code: "", components: [] }
+  }
+
+  const components = [] as string[]
+
+  const code = `
+      <Utility>
+        ${props.join("\n")}
+      </Utility>
+    `;
+  return { code, components };
+}
+
 // FORMS
 export const generateGenericForm = (props: string[]): GeneratePrefabReturn => {
   const defaultElement = `

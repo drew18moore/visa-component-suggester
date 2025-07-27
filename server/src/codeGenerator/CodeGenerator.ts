@@ -16,10 +16,8 @@ const generateCode = (parsed: {
   const prefabFunction = prefabMap[parsed.componentType];
   const elements: string[] = []
   for (let prop of parsed.properties) {
-    console.log(prop);
     elements.push(elementsMap[prop]);
   }
-  console.log(elements);
   return prefabFunction(elements);
 };
 
