@@ -2,7 +2,13 @@ import { Button, Input, InputContainer, Utility } from "@visa/nova-react";
 import { useRef } from "react";
 
 const ID = "prompt-input";
-const Prompt = ({ onSubmit }: { onSubmit: (code: string) => void }) => {
+const Prompt = ({
+  code,
+  onSubmit,
+}: {
+  code: string;
+  onSubmit: (code: string) => void;
+}) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const formRef = useRef<HTMLFormElement | null>(null);
 
@@ -10,7 +16,11 @@ const Prompt = ({ onSubmit }: { onSubmit: (code: string) => void }) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const query = formData.get(ID) as string;
-    console.log(query);
+    if (query.trim().length === 0) {
+      onSubmit("");
+      return;
+    }
+
     const res = await fetch(
       `http://localhost:3000/api/v1/generate?prompt=${query}`,
       {
@@ -22,7 +32,7 @@ const Prompt = ({ onSubmit }: { onSubmit: (code: string) => void }) => {
     );
     const data = await res.json();
     console.log(data);
-    onSubmit(data.code);
+    onSubmit(data.code || "");
   };
 
   const suggestedPrompts: string[] = [
@@ -42,27 +52,31 @@ const Prompt = ({ onSubmit }: { onSubmit: (code: string) => void }) => {
         width: "100%",
         margin: "0 auto",
         padding: "var(--size-scalable-16) var(--size-scalable-16)",
-        zIndex: "10"
+        zIndex: "10",
       }}
     >
-      <Utility vFlex vJustifyContent="center" vGap={10}>
-        {suggestedPrompts.map((p) => (
-          <Button
-            onClick={() => {
-              if (inputRef.current && formRef.current) {
-                inputRef.current.value = p
-                formRef.current.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }))
-              }
-            }}
-            colorScheme="secondary"
-            style={{
-              padding: "1.5rem",
-            }}
-          >
-            {p}
-          </Button>
-        ))}
-      </Utility>
+      {code.length === 0 && (
+        <Utility vFlex vJustifyContent="center" vGap={10}>
+          {suggestedPrompts.map((p) => (
+            <Button
+              onClick={() => {
+                if (inputRef.current && formRef.current) {
+                  inputRef.current.value = p;
+                  formRef.current.dispatchEvent(
+                    new Event("submit", { cancelable: true, bubbles: true })
+                  );
+                }
+              }}
+              colorScheme="secondary"
+              style={{
+                padding: "1.5rem",
+              }}
+            >
+              {p}
+            </Button>
+          ))}
+        </Utility>
+      )}
       <form ref={formRef} onSubmit={handleSubmit}>
         <InputContainer>
           <Input
