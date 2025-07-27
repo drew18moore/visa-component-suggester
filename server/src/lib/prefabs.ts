@@ -15,11 +15,11 @@ export const generateGenericForm = (props: string[]): GeneratePrefabReturn => {
     </Utility>
   `;
   const defaultComponents = [
-    "Utility",
-    "Label",
-    "InputContainer",
-    "Input",
-    "Button",
+    "<Utility />",
+    "<Label />",
+    "<InputContainer />",
+    "<Input />",
+    "<Button />",
   ];
   const code = `
       <form onSubmit={onSubmit}>
@@ -40,11 +40,11 @@ export const generateLoginForm = (props: string[]): GeneratePrefabReturn => {
   const defaultElements: string[] = [elementsMap.email, elementsMap.password];
   const filteredProps = props.filter((prop) => !defaultElements.includes(prop));
   const defaultComponents = [
-    "Utility",
-    "Label",
-    "InputContainer",
-    "Input",
-    "Button",
+    "<Utility />",
+    "<Label />",
+    "<InputContainer />",
+    "<Input />",
+    "<Button />",
   ];
   const code = `
       <form>
@@ -62,11 +62,11 @@ export const generateSignupForm = (props: string[]): GeneratePrefabReturn => {
   const defaultElements: string[] = [elementsMap.email, elementsMap.password];
   const filteredProps = props.filter((prop) => !defaultElements.includes(prop));
   const defaultComponents = [
-    "Utility",
-    "Label",
-    "InputContainer",
-    "Input",
-    "Button",
+    "<Utility />",
+    "<Label />",
+    "<InputContainer />",
+    "<Input />",
+    "<Button />",
   ];
   const code = `
       <form>

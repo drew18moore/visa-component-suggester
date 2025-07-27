@@ -3,6 +3,8 @@ import Prompt from "./components/Prompt";
 import CodeBlock from "./components/CodeBlock";
 import Navbar from "./components/Navbar";
 import Greeting from "./components/Greeting";
+import { Utility } from "@visa/nova-react";
+import ComponentsList from "./components/ComponentsList";
 
 function App() {
   const [currentPrompt, setCurrentPrompt] = useState<Prompt | null>(null);
@@ -28,7 +30,21 @@ function App() {
           currentPrompt={currentPrompt}
           setCurrentPrompt={setCurrentPrompt}
         />
-        {currentPrompt && <CodeBlock currentPrompt={currentPrompt} />}
+        {currentPrompt && (
+          <Utility
+            vFlex
+            vFlexCol
+            vGap={35}
+            vPadding={16}
+            style={{
+              paddingTop: "5.5rem",
+              paddingBottom: "6rem",
+            }}
+          >
+            <CodeBlock currentPrompt={currentPrompt} />
+            <ComponentsList components={currentPrompt.components} />
+          </Utility>
+        )}
       </main>
     </div>
   );

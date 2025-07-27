@@ -1,7 +1,7 @@
-import { Utility } from "@visa/nova-react";
 import { CopyBlock, dracula } from "react-code-blocks";
 import formatCode from "../utils/formatCode";
 import { useEffect, useState } from "react";
+import { Typography, Utility } from "@visa/nova-react";
 
 const CodeBlock = ({ currentPrompt }: { currentPrompt: Prompt }) => {
   const [formattedCode, setFormattedCode] = useState(currentPrompt.code);
@@ -14,18 +14,12 @@ const CodeBlock = ({ currentPrompt }: { currentPrompt: Prompt }) => {
   }, [currentPrompt.code]);
 
   return (
-    <Utility
-      vPadding={16}
-      style={{
-        paddingTop: "5.5rem",
-        paddingBottom: "6rem"
-      }}
-    >
+    <Utility vFlex vFlexCol vGap={5}>
+      <Typography variant="headline-2">React Code</Typography>
       <CopyBlock
         text={formattedCode}
         language="jsx"
         showLineNumbers
-        customStyle={{ textAlign: "left" }}
         theme={dracula}
       />
     </Utility>
