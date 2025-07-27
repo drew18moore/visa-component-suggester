@@ -4,4 +4,6 @@ export const prefabMap: Record<string, (props: string[]) => prefabs.GeneratePref
   login: prefabs.generateLoginForm,
   signup: prefabs.generateSignupForm,
   form: prefabs.generateGenericForm,
+  contactform: prefabs.generateContactForm,
+  navbar: prefabs.generateTopNav
 }

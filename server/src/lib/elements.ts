@@ -15,6 +15,14 @@ export const elementsMap: Record<string, string> = {
       </InputContainer>
     </Utility>
     `,
+  name: `
+    <Utility vFlex vFlexCol vGap={4}>
+      <Label htmlFor="name">Name</Label>
+      <InputContainer>
+        <Input aria-required="true" id="name" name="name" type="text" />
+      </InputContainer>
+    </Utility>
+    `,
   password: `
     <Utility vFlex vFlexCol vGap={4}>
       <Label htmlFor="password">Password</Label>
@@ -29,15 +37,15 @@ export const elementsMap: Record<string, string> = {
       <Label htmlFor={id}>Remember me</Label>
     </Utility>
     `,
-    terms: `
+  terms: `
     <Utility vAlignItems="center" vFlex vGap={2}>
       <Checkbox id={id} />
       <Label htmlFor={id}>I agree to the terms and conditions</Label>
     </Utility>
     `,
-    forgotpassword: `
+  forgotpassword: `
     <Utility>
       <Link href={link}>Forgot password?</Link>
     </Utility>
-    `
+    `,
 };
