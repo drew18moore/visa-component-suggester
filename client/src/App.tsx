@@ -17,6 +17,7 @@ function App() {
           position: "fixed",
           left: "0",
           right: "0",
+          zIndex: 10
         }}
       >
         <Navbar setCode={setCode} />

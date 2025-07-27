@@ -18,6 +18,7 @@ const CodeBlock = ({ code }: { code: string }) => {
       vPadding={16}
       style={{
         paddingTop: "5.5rem",
+        paddingBottom: "6rem"
       }}
     >
       <CopyBlock
