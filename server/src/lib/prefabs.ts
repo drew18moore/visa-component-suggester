@@ -85,7 +85,7 @@ export const generateContactForm = (props: string[]): GeneratePrefabReturn => {
   const defaultElements: string[] = [
     elementsMap.name,
     elementsMap.email,
-    elementsMap.password,
+    elementsMap.messageTextArea,
   ];
   const filteredProps = props.filter((prop) => !defaultElements.includes(prop));
   const defaultComponents = [
@@ -93,6 +93,7 @@ export const generateContactForm = (props: string[]): GeneratePrefabReturn => {
     "<Label />",
     "<InputContainer />",
     "<Input />",
+    "<TextArea />",
     "<Button />",
   ];
   const code = `

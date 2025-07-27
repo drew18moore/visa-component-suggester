@@ -23,6 +23,14 @@ export const elementsMap: Record<string, string> = {
       </InputContainer>
     </Utility>
     `,
+  messageTextArea: `
+    <Utility vFlex vFlexCol vGap={4}>
+      <Label htmlFor="message">Message</Label>
+      <InputContainer className="v-flex-row">
+        <Textarea aria-required="true" fixed id="message" name="message" style={{ blockSize: '130px' }} />
+      </InputContainer>
+    </Utility>
+    `,
   password: `
     <Utility vFlex vFlexCol vGap={4}>
       <Label htmlFor="password">Password</Label>
