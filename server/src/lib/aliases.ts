@@ -2,7 +2,7 @@ const COMPONENT_ALIASES: Record<string, string[]> = {
   login: ["log in", "sign in", "signin", "log-in", "sign-in"],
   signup: ["sign up", "register", "create account", "sign-up", "registration"],
 
-  modal: ["dialog", "popup", "pop-up", "overlay"],
+  dialog: ["modal", "popup", "pop-up", "overlay"],
   card: ["info card", "content box", "panel"],
 
   navbar: ["navigation", "menu", "top bar", "nav"],

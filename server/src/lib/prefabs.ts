@@ -5,6 +5,7 @@ export type GeneratePrefabReturn = {
   components: string[];
 };
 
+// FORMS
 export const generateGenericForm = (props: string[]): GeneratePrefabReturn => {
   const defaultElement = `
     <Utility vFlex vFlexCol vGap={4}>
@@ -106,13 +107,8 @@ export const generateContactForm = (props: string[]): GeneratePrefabReturn => {
   return { code, components: defaultComponents };
 };
 
+// NAVIGATION
 export const generateTopNav = (props: string[]): GeneratePrefabReturn => {
-  const defaultElements: string[] = [
-    elementsMap.name,
-    elementsMap.email,
-    elementsMap.password,
-  ];
-  const filteredProps = props.filter((prop) => !defaultElements.includes(prop));
   const defaultComponents = [
     "<Avatar/>",
     "<Badge/>",
@@ -474,5 +470,52 @@ export const generateTopNav = (props: string[]): GeneratePrefabReturn => {
       </UtilityFragment>
     </div>
     `;
+  return { code, components: defaultComponents };
+};
+
+// DIALOGS
+export const generateGenericDialog = (
+  props: string[]
+): GeneratePrefabReturn => {
+  const defaultElements: string[] = [
+    elementsMap.name,
+    elementsMap.email,
+    elementsMap.password,
+  ];
+  const filteredProps = props.filter((prop) => !defaultElements.includes(prop));
+  const defaultComponents = [
+    "<Button />",
+    "<Dialog />",
+    "<DialogCloseButton />",
+    "<DialogContent />",
+    "<DialogHeader />",
+    "<Typography />",
+    "<useFocusTrap />",
+    "<Utility />",
+  ];
+  const code = `
+    <>
+      <Button onClick={() => ref.current?.showModal()}>Open default dialog</Button>
+      <Dialog
+        aria-describedby={description}
+        aria-labelledby={title}
+        id={id}
+        ref={ref}
+        onKeyDown={e => onKeyNavigation(e, ref.current?.open)}
+      >
+        <DialogContent>
+          <DialogHeader id={title}>Default title</DialogHeader>
+          <Typography id={description}>
+            This is required text that describes the dialog title in more detail.
+          </Typography>
+          <Utility vAlignItems="center" vFlex vFlexWrap vGap={8} vPaddingTop={16}>
+            <Button>Primary action</Button>
+            <Button colorScheme="secondary">Secondary action</Button>
+          </Utility>
+        </DialogContent>
+        <DialogCloseButton onClick={() => ref.current?.close()} />
+      </Dialog>
+    </>
+  `;
   return { code, components: defaultComponents };
 };
