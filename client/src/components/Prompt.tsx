@@ -16,13 +16,14 @@ const Prompt = ({
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const query = formData.get(ID) as string;
-    if (query.trim().length === 0) {
+    const queryTrimmed = query.trim();
+    if (queryTrimmed.length === 0) {
       onSubmit("");
       return;
     }
 
     const res = await fetch(
-      `http://localhost:3000/api/v1/generate?prompt=${query}`,
+      `http://localhost:3000/api/v1/generate?prompt=${queryTrimmed}`,
       {
         method: "GET",
         headers: {
@@ -31,8 +32,20 @@ const Prompt = ({
       }
     );
     const data = await res.json();
-    console.log(data);
     onSubmit(data.code || "");
+
+    if (data.code) {
+      const store = localStorage.getItem("prompts")
+      if (!store) {
+        localStorage.setItem("prompts", JSON.stringify([{ prompt: queryTrimmed, code: data.code }]))
+        return;
+      };
+
+      const parsedStore = JSON.parse(store) as Prompt[];
+      if (parsedStore.some(item => item.prompt === queryTrimmed)) return;
+
+      localStorage.setItem("prompts", JSON.stringify([...parsedStore, { prompt: queryTrimmed, code: data.code }]))
+    }
   };
 
   const suggestedPrompts: string[] = [

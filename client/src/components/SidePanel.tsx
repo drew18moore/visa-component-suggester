@@ -7,37 +7,21 @@ import {
   Typography,
   UtilityFragment,
 } from "@visa/nova-react";
-import { useRef, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { VisaCloseTiny, VisaMenuLow } from "@visa/nova-icons-react";
 
 const id = "side-panel";
 const navElAriaLabel = "Side panel";
-const tabsContent = [
-  {
-    prompt: "L1 label 1",
-    code: "",
-  },
-  {
-    prompt: "L1 label 2",
-    code: "",
-  },
-  {
-    prompt: "L1 label 3",
-    code: "",
-  },
-  {
-    prompt: "L1 label 4",
-    code: "",
-  },
-  {
-    prompt: "L1 label 5",
-    code: "",
-  },
-];
 
 const SidePanel = () => {
   const panelRef = useRef<HTMLDialogElement>(null);
+  const [recentPrompts, setRecentPrompts] = useState<Prompt[]>([]);
 
+  useEffect(() => {
+    const store = localStorage.getItem("prompts");
+    if (!store) return;
+    setRecentPrompts(JSON.parse(store));
+  }, []);
   return (
     <>
       <UtilityFragment vMargin={10}>
@@ -95,14 +79,12 @@ const SidePanel = () => {
             </UtilityFragment>
             <nav aria-label={navElAriaLabel}>
               <Tabs orientation="vertical">
-                {tabsContent.map((tabContent, i) => (
+                {recentPrompts.map((tabContent, i) => (
                   <Tab key={`prompt-${i}`}>
                     <UtilityFragment vMarginLeft={14}>
                       <Button
                         colorScheme="tertiary"
-                        element={
-                          <Typography>{tabContent.prompt}</Typography>
-                        }
+                        element={<Typography>{tabContent.prompt}</Typography>}
                       />
                     </UtilityFragment>
                   </Tab>
