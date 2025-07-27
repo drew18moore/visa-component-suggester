@@ -1,15 +1,5 @@
-type ParsedToken = {
-  componentType: string;
-  elements: {
-    type: string;
-    variant: string;
-  }[];
+export type GenerateResponse = {
+  prompt: string;
+  code: string;
+  components: string[];
 };
-
-type AST_ELEMENT = [
-  type: string,
-  variant?: string,
-  modifiers?: string[],
-  properties?: string,
-  children?: AST_ELEMENT
-]

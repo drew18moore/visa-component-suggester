@@ -3,4 +3,5 @@
 type Prompt = {
   prompt: string;
   code: string;
+  components: string[];
 };
