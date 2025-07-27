@@ -3,11 +3,11 @@ import { useRef } from "react";
 
 const ID = "prompt-input";
 const Prompt = ({
-  code,
-  setCode,
+  currentPrompt,
+  setCurrentPrompt,
 }: {
-  code: string;
-  setCode: React.Dispatch<React.SetStateAction<string>>;
+  currentPrompt: Prompt | null;
+  setCurrentPrompt: React.Dispatch<React.SetStateAction<Prompt | null>>;
 }) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const formRef = useRef<HTMLFormElement | null>(null);
@@ -18,7 +18,7 @@ const Prompt = ({
     const query = formData.get(ID) as string;
     const queryTrimmed = query.trim();
     if (queryTrimmed.length === 0) {
-      setCode("");
+      setCurrentPrompt(null);
       return;
     }
 
@@ -31,20 +31,23 @@ const Prompt = ({
         },
       }
     );
-    const data = await res.json() as Prompt;
-    setCode(data.code || "");
+    const data = (await res.json()) as Prompt;
+    setCurrentPrompt(data || null);
 
     if (data.code) {
-      const store = localStorage.getItem("prompts")
+      const store = localStorage.getItem("prompts");
       if (!store) {
-        localStorage.setItem("prompts", JSON.stringify([{ ...data }]))
+        localStorage.setItem("prompts", JSON.stringify([{ ...data }]));
         return;
-      };
+      }
 
       const parsedStore = JSON.parse(store) as Prompt[];
-      if (parsedStore.some(item => item.prompt === queryTrimmed)) return;
+      if (parsedStore.some((item) => item.prompt === queryTrimmed)) return;
 
-      localStorage.setItem("prompts", JSON.stringify([...parsedStore, { ...data }]))
+      localStorage.setItem(
+        "prompts",
+        JSON.stringify([...parsedStore, { ...data }])
+      );
     }
   };
 
@@ -68,7 +71,7 @@ const Prompt = ({
         zIndex: "10",
       }}
     >
-      {code.length === 0 && (
+      {currentPrompt === null && (
         <Utility vFlex vJustifyContent="center" vGap={10}>
           {suggestedPrompts.map((p, i) => (
             <Button

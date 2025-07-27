@@ -11,7 +11,7 @@ import SidePanel from "./SidePanel";
 
 const id = "navbar";
 
-const Navbar = ({ setCode }: { setCode: React.Dispatch<React.SetStateAction<string>> }) => {
+const Navbar = ({ setCurrentPrompt }: { setCurrentPrompt: React.Dispatch<React.SetStateAction<Prompt | null>> }) => {
   return (
     <div>
       <Link skipLink href="#content">
@@ -21,7 +21,7 @@ const Navbar = ({ setCode }: { setCode: React.Dispatch<React.SetStateAction<stri
         <Nav id={id} orientation="horizontal" tag="header" style={{
           position: "relative"
         }}>
-          <SidePanel setCode={setCode} />
+          <SidePanel setCurrentPrompt={setCurrentPrompt} />
           <UtilityFragment vFlex vGap={16} style={{
             position: "absolute",
             left: "50%",

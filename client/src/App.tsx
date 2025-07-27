@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar";
 import Greeting from "./components/Greeting";
 
 function App() {
-  const [code, setCode] = useState<string>("");
+  const [currentPrompt, setCurrentPrompt] = useState<Prompt | null>(null);
   return (
     <div
       style={{
@@ -17,15 +17,18 @@ function App() {
           position: "fixed",
           left: "0",
           right: "0",
-          zIndex: 10
+          zIndex: 10,
         }}
       >
-        <Navbar setCode={setCode} />
+        <Navbar setCurrentPrompt={setCurrentPrompt} />
       </header>
       <main>
-        {!code && <Greeting />}
-        <Prompt code={code} setCode={setCode} />
-        {code && <CodeBlock code={code} />}
+        {!currentPrompt && <Greeting />}
+        <Prompt
+          currentPrompt={currentPrompt}
+          setCurrentPrompt={setCurrentPrompt}
+        />
+        {currentPrompt && <CodeBlock currentPrompt={currentPrompt} />}
       </main>
     </div>
   );

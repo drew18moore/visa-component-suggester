@@ -14,9 +14,9 @@ const id = "side-panel";
 const navElAriaLabel = "Side panel";
 
 const SidePanel = ({
-  setCode,
+  setCurrentPrompt,
 }: {
-  setCode: React.Dispatch<React.SetStateAction<string>>;
+  setCurrentPrompt: React.Dispatch<React.SetStateAction<Prompt | null>>;
 }) => {
   const panelRef = useRef<HTMLDialogElement>(null);
   const [recentPrompts, setRecentPrompts] = useState<Prompt[]>([]);
@@ -90,7 +90,7 @@ const SidePanel = ({
                         colorScheme="tertiary"
                         element={<Typography>{tabContent.prompt}</Typography>}
                         onClick={() => {
-                          setCode(tabContent.code);
+                          setCurrentPrompt(tabContent);
                           panelRef.current?.close();
                         }}
                       />

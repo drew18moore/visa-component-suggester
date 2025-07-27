@@ -3,15 +3,15 @@ import { CopyBlock, dracula } from "react-code-blocks";
 import formatCode from "../utils/formatCode";
 import { useEffect, useState } from "react";
 
-const CodeBlock = ({ code }: { code: string }) => {
-  const [formattedCode, setFormattedCode] = useState(code);
+const CodeBlock = ({ currentPrompt }: { currentPrompt: Prompt }) => {
+  const [formattedCode, setFormattedCode] = useState(currentPrompt.code);
 
   useEffect(() => {
     (async () => {
-      const res = await formatCode(code);
+      const res = await formatCode(currentPrompt.code);
       setFormattedCode(res);
     })();
-  }, [code]);
+  }, [currentPrompt.code]);
 
   return (
     <Utility
