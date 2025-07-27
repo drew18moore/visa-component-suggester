@@ -26,9 +26,10 @@ generateRouter.get("/generate", (req: Request, res: Response) => {
   */
 
   const parsed = parse(prompt)
-  const code = generateCode(parsed)
+  console.log(parsed);
+  const { code, components } = generateCode(parsed)
 
-  const response: GenerateResponse = { prompt, code, components: [] }
+  const response: GenerateResponse = { prompt, code, components }
   res.status(200).json(response);
 });
 

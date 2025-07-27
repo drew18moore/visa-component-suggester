@@ -1,6 +1,11 @@
 import { elementsMap } from "./elements";
 
-export const generateGenericForm = (props: string[]): string => {
+export type GeneratePrefabReturn = {
+  code: string;
+  components: string[];
+};
+
+export const generateGenericForm = (props: string[]): GeneratePrefabReturn => {
   const defaultElement = `
     <Utility vFlex vFlexCol vGap={4}>
       <Label htmlFor={id}>Label (required)</Label>
@@ -9,7 +14,14 @@ export const generateGenericForm = (props: string[]): string => {
       </InputContainer>
     </Utility>
   `;
-  return `
+  const defaultComponents = [
+    "Utility",
+    "Label",
+    "InputContainer",
+    "Input",
+    "Button",
+  ];
+  const code = `
       <form onSubmit={onSubmit}>
         ${props.length === 0 ? defaultElement : ""}
         ${props.join("\n")}
@@ -21,13 +33,20 @@ export const generateGenericForm = (props: string[]): string => {
         </Utility>
       </form>
     `;
+  return { code, components: defaultComponents };
 };
 
-export const generateLoginForm = (props: string[]): string => {
+export const generateLoginForm = (props: string[]): GeneratePrefabReturn => {
   const defaultElements: string[] = [elementsMap.email, elementsMap.password];
   const filteredProps = props.filter((prop) => !defaultElements.includes(prop));
-  console.log("FILTERED:", filteredProps);
-  return `
+  const defaultComponents = [
+    "Utility",
+    "Label",
+    "InputContainer",
+    "Input",
+    "Button",
+  ];
+  const code = `
       <form>
         ${defaultElements.join("\n")}
         ${filteredProps.join("\n")}
@@ -36,13 +55,20 @@ export const generateLoginForm = (props: string[]): string => {
         </Utility>
       </form>
     `;
+  return { code, components: defaultComponents };
 };
 
-export const generateSignupForm = (props: string[]): string => {
+export const generateSignupForm = (props: string[]): GeneratePrefabReturn => {
   const defaultElements: string[] = [elementsMap.email, elementsMap.password];
   const filteredProps = props.filter((prop) => !defaultElements.includes(prop));
-  console.log("FILTERED:", filteredProps);
-  return `
+  const defaultComponents = [
+    "Utility",
+    "Label",
+    "InputContainer",
+    "Input",
+    "Button",
+  ];
+  const code = `
       <form>
         ${defaultElements.join("\n")}
         ${filteredProps.join("\n")}
@@ -51,4 +77,5 @@ export const generateSignupForm = (props: string[]): string => {
         </Utility>
       </form>
     `;
+  return { code, components: defaultComponents };
 };

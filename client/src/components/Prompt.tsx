@@ -31,20 +31,20 @@ const Prompt = ({
         },
       }
     );
-    const data = await res.json();
+    const data = await res.json() as Prompt;
     setCode(data.code || "");
 
     if (data.code) {
       const store = localStorage.getItem("prompts")
       if (!store) {
-        localStorage.setItem("prompts", JSON.stringify([{ prompt: queryTrimmed, code: data.code }]))
+        localStorage.setItem("prompts", JSON.stringify([{ ...data }]))
         return;
       };
 
       const parsedStore = JSON.parse(store) as Prompt[];
       if (parsedStore.some(item => item.prompt === queryTrimmed)) return;
 
-      localStorage.setItem("prompts", JSON.stringify([...parsedStore, { prompt: queryTrimmed, code: data.code }]))
+      localStorage.setItem("prompts", JSON.stringify([...parsedStore, { ...data }]))
     }
   };
 

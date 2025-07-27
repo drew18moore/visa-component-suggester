@@ -1,11 +1,12 @@
 import { elementsMap } from "../lib/elements";
 import { prefabMap } from "../lib/prefabMap";
+import { GeneratePrefabReturn } from "../lib/prefabs";
 
 
 const generateCode = (parsed: {
   componentType: string;
   properties: string[];
-}): string => {
+}): GeneratePrefabReturn => {
   /*
   - Select prefab function from componentType
   - Select code for each property
