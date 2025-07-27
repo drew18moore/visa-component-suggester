@@ -11,7 +11,7 @@ import SidePanel from "./SidePanel";
 
 const id = "navbar";
 
-const Navbar = () => {
+const Navbar = ({ setCode }: { setCode: React.Dispatch<React.SetStateAction<string>> }) => {
   return (
     <div>
       <Link skipLink href="#content">
@@ -21,7 +21,7 @@ const Navbar = () => {
         <Nav id={id} orientation="horizontal" tag="header" style={{
           position: "relative"
         }}>
-          <SidePanel />
+          <SidePanel setCode={setCode} />
           <UtilityFragment vFlex vGap={16} style={{
             position: "absolute",
             left: "50%",

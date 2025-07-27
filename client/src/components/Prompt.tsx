@@ -4,10 +4,10 @@ import { useRef } from "react";
 const ID = "prompt-input";
 const Prompt = ({
   code,
-  onSubmit,
+  setCode,
 }: {
   code: string;
-  onSubmit: (code: string) => void;
+  setCode: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const formRef = useRef<HTMLFormElement | null>(null);
@@ -18,7 +18,7 @@ const Prompt = ({
     const query = formData.get(ID) as string;
     const queryTrimmed = query.trim();
     if (queryTrimmed.length === 0) {
-      onSubmit("");
+      setCode("");
       return;
     }
 
@@ -32,7 +32,7 @@ const Prompt = ({
       }
     );
     const data = await res.json();
-    onSubmit(data.code || "");
+    setCode(data.code || "");
 
     if (data.code) {
       const store = localStorage.getItem("prompts")

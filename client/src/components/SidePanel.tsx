@@ -13,7 +13,11 @@ import { VisaCloseTiny, VisaMenuLow } from "@visa/nova-icons-react";
 const id = "side-panel";
 const navElAriaLabel = "Side panel";
 
-const SidePanel = () => {
+const SidePanel = ({
+  setCode,
+}: {
+  setCode: React.Dispatch<React.SetStateAction<string>>;
+}) => {
   const panelRef = useRef<HTMLDialogElement>(null);
   const [recentPrompts, setRecentPrompts] = useState<Prompt[]>([]);
 
@@ -85,6 +89,10 @@ const SidePanel = () => {
                       <Button
                         colorScheme="tertiary"
                         element={<Typography>{tabContent.prompt}</Typography>}
+                        onClick={() => {
+                          setCode(tabContent.code);
+                          panelRef.current?.close();
+                        }}
                       />
                     </UtilityFragment>
                   </Tab>

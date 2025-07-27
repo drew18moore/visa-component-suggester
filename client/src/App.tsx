@@ -19,11 +19,11 @@ function App() {
           right: "0",
         }}
       >
-        <Navbar />
+        <Navbar setCode={setCode} />
       </header>
       <main>
         {!code && <Greeting />}
-        <Prompt code={code} onSubmit={setCode} />
+        <Prompt code={code} setCode={setCode} />
         {code && <CodeBlock code={code} />}
       </main>
     </div>
