@@ -10,4 +10,6 @@ export const prefabMap: Record<
   contactform: prefabs.generateContactForm,
   navbar: prefabs.generateTopNav,
   dialog: prefabs.generateGenericDialog,
+  errordialog: prefabs.generateErrorDialog,
+  warningdialog: prefabs.generateWarningDialog,
 };

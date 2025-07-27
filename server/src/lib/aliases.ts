@@ -3,6 +3,20 @@ const COMPONENT_ALIASES: Record<string, string[]> = {
   signup: ["sign up", "register", "create account", "sign-up", "registration"],
 
   dialog: ["modal", "popup", "pop-up", "overlay"],
+  errordialog: [
+    "error dialog",
+    "error modal",
+    "error popup",
+    "error pop-up",
+    "error overlay",
+  ],
+  warningdialog: [
+    "warning dialog",
+    "warning modal",
+    "warning popup",
+    "warning pop-up",
+    "warning overlay",
+  ],
   card: ["info card", "content box", "panel"],
 
   navbar: ["navigation", "menu", "top bar", "nav"],
@@ -47,7 +61,11 @@ const COMPONENT_ALIASES: Record<string, string[]> = {
 
 const PROPERTY_ALIASES: Record<string, string[]> = {
   rememberme: ["remember me", "keep me signed in", "stay signed in"],
-  "terms-and-conditions": ["terms and conditions", "accept terms", "agree to terms"],
+  "terms-and-conditions": [
+    "terms and conditions",
+    "accept terms",
+    "agree to terms",
+  ],
   username: ["username", "user name", "login id"],
   password: ["password", "passcode"],
   email: ["email", "email address"],
@@ -55,9 +73,11 @@ const PROPERTY_ALIASES: Record<string, string[]> = {
   checkbox: ["checkbox", "tick box"],
   terms: ["terms and conditions"],
   forgotpassword: ["forgot password", "reset password"],
-}
+};
 
-const getAliases = (_aliases: Record<string, string[]>): Record<string, string> => {
+const getAliases = (
+  _aliases: Record<string, string[]>
+): Record<string, string> => {
   const flattenedAliases: Record<string, string> = {};
   for (const [canonical, aliases] of Object.entries(_aliases)) {
     flattenedAliases[canonical] = canonical;
@@ -69,9 +89,9 @@ const getAliases = (_aliases: Record<string, string[]>): Record<string, string> 
 };
 
 export const getComponentAliases = () => {
-  return getAliases(COMPONENT_ALIASES)
-}
+  return getAliases(COMPONENT_ALIASES);
+};
 
 export const getPropertyAliases = () => {
-  return getAliases(PROPERTY_ALIASES)
-}
+  return getAliases(PROPERTY_ALIASES);
+};

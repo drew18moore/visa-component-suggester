@@ -477,12 +477,6 @@ export const generateTopNav = (props: string[]): GeneratePrefabReturn => {
 export const generateGenericDialog = (
   props: string[]
 ): GeneratePrefabReturn => {
-  const defaultElements: string[] = [
-    elementsMap.name,
-    elementsMap.email,
-    elementsMap.password,
-  ];
-  const filteredProps = props.filter((prop) => !defaultElements.includes(prop));
   const defaultComponents = [
     "<Button />",
     "<Dialog />",
@@ -508,9 +502,96 @@ export const generateGenericDialog = (
           <Typography id={description}>
             This is required text that describes the dialog title in more detail.
           </Typography>
+          ${props.join("\n")}
           <Utility vAlignItems="center" vFlex vFlexWrap vGap={8} vPaddingTop={16}>
             <Button>Primary action</Button>
             <Button colorScheme="secondary">Secondary action</Button>
+          </Utility>
+        </DialogContent>
+        <DialogCloseButton onClick={() => ref.current?.close()} />
+      </Dialog>
+    </>
+  `;
+  return { code, components: defaultComponents };
+};
+
+export const generateErrorDialog = (props: string[]): GeneratePrefabReturn => {
+  const defaultComponents = [
+    "<Button />",
+    "<Dialog />",
+    "<DialogCloseButton />",
+    "<DialogContent />",
+    "<DialogHeader />",
+    "<Typography />",
+    "<useFocusTrap />",
+    "<Utility />",
+  ];
+  const code = `
+    <>
+      <Button onClick={() => ref.current?.showModal()}>Open error dialog</Button>
+      <Dialog
+        aria-describedby={description}
+        aria-labelledby={title}
+        id={id}
+        messageType="error"
+        onKeyDown={e => onKeyNavigation(e, ref.current?.open)}
+        ref={ref}
+      >
+        <DialogContent>
+          <DialogHeader id={title}>
+            <DialogIcon />
+            Error title
+          </DialogHeader>
+          <Typography id={description}>
+            This is required text that describes the dialog title in more detail.
+          </Typography>
+          ${props.join("\n")}
+          <Utility vAlignItems="center" vFlex vFlexWrap vGap={8} vPaddingTop={16}>
+            <Button>Primary action</Button>
+          </Utility>
+        </DialogContent>
+        <DialogCloseButton onClick={() => ref.current?.close()} />
+      </Dialog>
+    </>
+  `;
+  return { code, components: defaultComponents };
+};
+
+export const generateWarningDialog = (
+  props: string[]
+): GeneratePrefabReturn => {
+  const defaultComponents = [
+    "<Button />",
+    "<Dialog />",
+    "<DialogCloseButton />",
+    "<DialogContent />",
+    "<DialogHeader />",
+    "<Typography />",
+    "<useFocusTrap />",
+    "<Utility />",
+  ];
+  const code = `
+    <>
+      <Button onClick={() => ref.current?.showModal()}>Open warning dialog</Button>
+      <Dialog
+        aria-describedby={description}
+        aria-labelledby={title}
+        ref={ref}
+        id={id}
+        messageType="warning"
+        onKeyDown={e => onKeyNavigation(e, ref.current?.open)}
+      >
+        <DialogContent>
+          <DialogHeader id={title}>
+            <DialogIcon />
+            Warning title
+          </DialogHeader>
+          <Typography id={description}>
+            This is required text that describes the dialog title in more detail.
+          </Typography>
+          ${props.join("\n")}
+          <Utility vAlignItems="center" vFlex vFlexWrap vGap={8} vPaddingTop={16}>
+            <Button>Primary action</Button>
           </Utility>
         </DialogContent>
         <DialogCloseButton onClick={() => ref.current?.close()} />
