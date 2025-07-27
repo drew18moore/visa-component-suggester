@@ -7,6 +7,7 @@ import {
   UtilityFragment,
   VisaLogo,
 } from "@visa/nova-react";
+import SidePanel from "./SidePanel";
 
 const id = "navbar";
 
@@ -17,8 +18,15 @@ const Navbar = () => {
         Skip to content
       </Link>
       <UtilityFragment vJustifyContent="between">
-        <Nav id={id} orientation="horizontal" tag="header">
-          <UtilityFragment vFlex vGap={16}>
+        <Nav id={id} orientation="horizontal" tag="header" style={{
+          position: "relative"
+        }}>
+          <SidePanel />
+          <UtilityFragment vFlex vGap={16} style={{
+            position: "absolute",
+            left: "50%",
+            translate: "-50% 0"
+          }}>
             <Link
               aria-label="Visa Application Name Home"
               href="./horizontal-navigation"

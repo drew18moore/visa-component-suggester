@@ -42,6 +42,7 @@ const Prompt = ({ onSubmit }: { onSubmit: (code: string) => void }) => {
         width: "100%",
         margin: "0 auto",
         padding: "var(--size-scalable-16) var(--size-scalable-16)",
+        zIndex: "10"
       }}
     >
       <Utility vFlex vJustifyContent="center" vGap={10}>
