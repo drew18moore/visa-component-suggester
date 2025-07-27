@@ -53,7 +53,7 @@ const PROPERTY_ALIASES: Record<string, string[]> = {
   email: ["email", "email address"],
   submit: ["submit button", "submit", "send"],
   checkbox: ["checkbox", "tick box"],
-  captcha: ["captcha", "robot check", "i am not a robot"],
+  terms: ["terms and conditions"],
   forgotpassword: ["forgot password", "reset password"],
 }
 

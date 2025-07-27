@@ -29,4 +29,15 @@ export const elementsMap: Record<string, string> = {
       <Label htmlFor={id}>Remember me</Label>
     </Utility>
     `,
+    terms: `
+    <Utility vAlignItems="center" vFlex vGap={2}>
+      <Checkbox id={id} />
+      <Label htmlFor={id}>I agree to the terms and conditions</Label>
+    </Utility>
+    `,
+    forgotpassword: `
+    <Utility>
+      <Link href={link}>Forgot password?</Link>
+    </Utility>
+    `
 };
