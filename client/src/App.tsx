@@ -12,7 +12,11 @@ function App() {
         minHeight: "100vh",
       }}
     >
-      <header>
+      <header style={{
+        position: "fixed",
+        left: "0",
+        right: "0"
+      }}>
         <Navbar />
       </header>
       <main>
