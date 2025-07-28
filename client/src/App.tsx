@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Prompt from "./components/Prompt";
-import CodeBlock from "./components/CodeBlock";
+import CustomCodeBlock from "./components/CodeBlock";
 import Navbar from "./components/Navbar";
 import Greeting from "./components/Greeting";
 import { Utility } from "@visa/nova-react";
@@ -42,7 +42,7 @@ function App() {
               paddingBottom: "6rem",
             }}
           >
-            <CodeBlock currentPrompt={currentPrompt} />
+            <CustomCodeBlock currentPrompt={currentPrompt} />
             <ComponentsList components={currentPrompt.components} />
           </Utility>
         )}
