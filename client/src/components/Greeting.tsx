@@ -11,6 +11,7 @@ const Greeting = () => {
         width: "100%",
         textAlign: "center",
       }}
+      colorScheme="active"
     >
       What can I create for you?
     </Typography>

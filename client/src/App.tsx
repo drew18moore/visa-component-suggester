@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Greeting from "./components/Greeting";
 import { Utility } from "@visa/nova-react";
 import ComponentsList from "./components/ComponentsList";
+import WelcomeDialog from "./components/WelcomeDialog";
 
 function App() {
   const [currentPrompt, setCurrentPrompt] = useState<Prompt | null>(null);
@@ -45,6 +46,7 @@ function App() {
             <ComponentsList components={currentPrompt.components} />
           </Utility>
         )}
+        <WelcomeDialog />
       </main>
     </div>
   );
