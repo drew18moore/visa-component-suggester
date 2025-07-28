@@ -58,6 +58,7 @@ const SidePanel = ({
             style={
               {
                 inlineSize: "350px",
+                maxHeight: "100vh",
               } as CSSProperties
             }
           >
@@ -81,7 +82,12 @@ const SidePanel = ({
             >
               <Typography>Recent prompts</Typography>
             </UtilityFragment>
-            <nav aria-label={navElAriaLabel}>
+            <nav
+              aria-label={navElAriaLabel}
+              style={{
+                overflowY: "auto",
+              }}
+            >
               <Tabs orientation="vertical">
                 {recentPrompts.map((tabContent, i) => (
                   <Tab key={`prompt-${i}`}>
@@ -92,11 +98,17 @@ const SidePanel = ({
                           setCurrentPrompt(tabContent);
                           panelRef.current?.close();
                         }}
-                      ><Typography style={{
-                        whiteSpace: "nowrap",
-                        textOverflow: "ellipsis",
-                        overflow: "hidden"
-                      }}>{tabContent.prompt}</Typography></Button>
+                      >
+                        <Typography
+                          style={{
+                            whiteSpace: "nowrap",
+                            textOverflow: "ellipsis",
+                            overflow: "hidden",
+                          }}
+                        >
+                          {tabContent.prompt}
+                        </Typography>
+                      </Button>
                     </UtilityFragment>
                   </Tab>
                 ))}
