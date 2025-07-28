@@ -14,9 +14,6 @@ const id = "navbar";
 const Navbar = ({ setCurrentPrompt }: { setCurrentPrompt: React.Dispatch<React.SetStateAction<Prompt | null>> }) => {
   return (
     <div>
-      <Link skipLink href="#content">
-        Skip to content
-      </Link>
       <UtilityFragment vJustifyContent="between">
         <Nav id={id} orientation="horizontal" tag="header" style={{
           position: "relative"
@@ -39,7 +36,7 @@ const Navbar = ({ setCurrentPrompt }: { setCurrentPrompt: React.Dispatch<React.S
                 <Utility
                   vContainerHide="xs"
                   element={
-                    <Typography variant="headline-3">
+                    <Typography variant="headline-4">
                       Component Suggestion Tool
                     </Typography>
                   }

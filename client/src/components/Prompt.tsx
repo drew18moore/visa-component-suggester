@@ -73,7 +73,7 @@ const Prompt = ({
       }}
     >
       {currentPrompt === null && (
-        <Utility vFlex vJustifyContent="center" vGap={10}>
+        <Utility vFlex vJustifyContent="center" vGap={10} className="suggested-prompts">
           {suggestedPrompts.map((p, i) => (
             <Button
               onClick={() => {

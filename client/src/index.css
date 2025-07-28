@@ -1,0 +1,9 @@
+.suggested-prompts {
+  display: flex;
+}
+
+@media (width <= 625px) {
+  .suggested-prompts {
+    display: none;
+  }
+}
