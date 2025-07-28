@@ -6,6 +6,8 @@
     "lib": ["esnext"],
     "esModuleInterop": true,
     "target": "es2015",
-    "downlevelIteration": true
+    "downlevelIteration": true,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext"
   }
 }
