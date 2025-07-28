@@ -16,15 +16,26 @@ const WelcomeDialog = () => {
   const { onKeyNavigation, ref } = useFocusTrap();
 
   useEffect(() => {
-    ref.current?.showModal();
+    const showDialog = localStorage.getItem("show-welcome-dialog");
+    if (!showDialog || JSON.parse(showDialog)) {
+      ref.current?.showModal();
+    }
   }, [ref]);
+
+  const updateLocalStorage = () => {
+    localStorage.setItem("show-welcome-dialog", "false");
+  };
+
   return (
     <Dialog
       aria-describedby={`${id}-description`}
       aria-labelledby={`${id}-title`}
       id={id}
       ref={ref}
-      onKeyDown={(e) => onKeyNavigation(e, ref.current?.open)}
+      onKeyDown={(e) => {
+        onKeyNavigation(e, ref.current?.open);
+        updateLocalStorage();
+      }}
       style={{
         width: "500px",
       }}
@@ -53,14 +64,33 @@ const WelcomeDialog = () => {
             e.g. "An error dialog with a username and password field.""
           </Typography>
           <Typography>
-            🛠 To use any of these components, follow the guides in the <Link href="https://design.visa.com/developing/react/" target="_blank" >Visa Product Design System documentation</Link>.
+            🛠 To use any of these components, follow the guides in the{" "}
+            <Link
+              href="https://design.visa.com/developing/react/"
+              target="_blank"
+            >
+              Visa Product Design System documentation
+            </Link>
+            .
           </Typography>
         </Utility>
         <Utility vPaddingTop={16}>
-          <Button onClick={() => ref.current?.close()}>Proceed</Button>
+          <Button
+            onClick={() => {
+              ref.current?.close();
+              updateLocalStorage();
+            }}
+          >
+            Proceed
+          </Button>
         </Utility>
       </DialogContent>
-      <DialogCloseButton onClick={() => ref.current?.close()} />
+      <DialogCloseButton
+        onClick={() => {
+          ref.current?.close();
+          updateLocalStorage();
+        }}
+      />
     </Dialog>
   );
 };

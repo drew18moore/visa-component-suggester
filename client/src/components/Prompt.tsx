@@ -1,5 +1,5 @@
 import { Button, Input, InputContainer, Utility } from "@visa/nova-react";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 const ID = "prompt-input";
 const Prompt = ({
@@ -58,6 +58,12 @@ const Prompt = ({
     "confirmation dialog",
   ];
 
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
+
   return (
     <Utility
       vFlex
@@ -73,7 +79,12 @@ const Prompt = ({
       }}
     >
       {currentPrompt === null && (
-        <Utility vFlex vJustifyContent="center" vGap={10} className="suggested-prompts">
+        <Utility
+          vFlex
+          vJustifyContent="center"
+          vGap={10}
+          className="suggested-prompts"
+        >
           {suggestedPrompts.map((p, i) => (
             <Button
               onClick={() => {
