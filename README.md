@@ -120,3 +120,10 @@ npm run dev
 - More complex algorithm: Improving existing algorithm to handle more complex queries (e.g. a login form with a drop shadow and green submit button with the text "Join us")
 - Integration with Visa's design system docs
 - Testing: Create unit and integration tests
+
+---
+
+## AI Usage
+
+- Used ChatGPT for debugging assistance and learning how to use certain libraries.
+- Used GitHub Copilot for code autocompletion.
