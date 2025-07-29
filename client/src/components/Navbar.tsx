@@ -11,14 +11,14 @@ import SidePanel from "./SidePanel";
 
 const id = "navbar";
 
-const Navbar = ({ setCurrentPrompt }: { setCurrentPrompt: React.Dispatch<React.SetStateAction<Prompt | null>> }) => {
+const Navbar = ({ currentPrompt, setCurrentPrompt }: { currentPrompt: Prompt | null, setCurrentPrompt: React.Dispatch<React.SetStateAction<Prompt | null>> }) => {
   return (
     <div>
       <UtilityFragment vJustifyContent="between">
         <Nav id={id} orientation="horizontal" tag="header" style={{
           position: "relative"
         }}>
-          <SidePanel setCurrentPrompt={setCurrentPrompt} />
+          <SidePanel currentPrompt={currentPrompt} setCurrentPrompt={setCurrentPrompt} />
           <UtilityFragment vFlex vGap={16} style={{
             position: "absolute",
             left: "50%",

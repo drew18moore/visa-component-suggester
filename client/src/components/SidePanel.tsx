@@ -14,8 +14,10 @@ const id = "side-panel";
 const navElAriaLabel = "Side panel";
 
 const SidePanel = ({
+  currentPrompt,
   setCurrentPrompt,
 }: {
+  currentPrompt: Prompt | null,
   setCurrentPrompt: React.Dispatch<React.SetStateAction<Prompt | null>>;
 }) => {
   const panelRef = useRef<HTMLDialogElement>(null);
@@ -25,7 +27,7 @@ const SidePanel = ({
     const store = localStorage.getItem("prompts");
     if (!store) return;
     setRecentPrompts(JSON.parse(store));
-  }, []);
+  }, [currentPrompt]);
   return (
     <>
       <UtilityFragment vMargin={10}>

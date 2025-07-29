@@ -23,7 +23,7 @@ function App() {
           zIndex: 10,
         }}
       >
-        <Navbar setCurrentPrompt={setCurrentPrompt} />
+        <Navbar currentPrompt={currentPrompt} setCurrentPrompt={setCurrentPrompt} />
       </header>
       <main>
         {!currentPrompt && <Greeting />}
