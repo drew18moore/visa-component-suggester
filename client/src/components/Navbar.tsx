@@ -26,7 +26,7 @@ const Navbar = ({ setCurrentPrompt }: { setCurrentPrompt: React.Dispatch<React.S
           }}>
             <Link
               aria-label="Visa Application Name Home"
-              href="./horizontal-navigation"
+              href=""
               id={`${id}-home-link`}
               noUnderline
               style={{ backgroundColor: "transparent" }}
